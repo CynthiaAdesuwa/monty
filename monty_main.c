@@ -1,9 +1,7 @@
 #include "monty.h"
-#include <stdio.h>
-#define _GNU_SOURCE
-#include <stdlib.h>
 
-bus_t bus = {NULL, NULL, NULL, 0};
+#define _GNU_SOURCE
+#include <stdio.h>
 
 /**
  * main - function for monty code interpreter
