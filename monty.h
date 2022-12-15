@@ -1,22 +1,28 @@
-#ifndef TADEM_H
-#define TADEM_H
+#ifndef MONTY_HEADERS
+#define MONTY_HEADERS
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <unistd.h>
 #include <fcntl.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include <string.h>
 #include <ctype.h>
+
+#endif /* MONTY_HEADERS */
+
+#ifndef MONTY_STRUCT
+#define MONTY_STRUCT
+
+/* STRUCT #1 */
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
  * @prev: points to the previous element of the stack (or queue)
- * @next: points to the next element of the stack (or queue)@next: points to the next element of the stack (or queue)
+ * @next: points to the next element of the stack (or queue)
  *
  * Description: doubly linked list node structure
- * for stack, queues, LIFO, FIFO
+ * for stack, queues, LIFO, FIFO Holberton project
  */
 typedef struct stack_s
 {
@@ -25,14 +31,15 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
+/* STRUCT #2 */
 
 /**
- * struct instruction_s - opcode and its functions
+ * struct instruction_s - opcode and its function
  * @opcode: the opcode
  * @f: function to handle the opcode
  *
  * Description: opcode and its function
- * for stack, queues, LIFO, FIFO
+ * for stack, queues, LIFO, FIFO Holberton project
  */
 typedef struct instruction_s
 {
@@ -40,49 +47,49 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+#endif /* MONTY_STRUCT */
+
+#ifndef VALIDATOR
+#define VALIDATOR
 
 /**
-* struct bus_s - variables -args, file, line content
-* @arg: value
-* @file: pointer to monty file
-* @content: line content
-* @lifi: flag change stack <-> queue
-*
-* Description: carries values through the program
-*/
-typedef struct bus_s
+ * struct validator - return value of opcode and if list is stack or queue
+ * @opcode: return value of opcode
+ * @queue_value: 1 if list is a queue, 0 if list is a stack
+ */
+typedef struct validator
 {
-	char *arg;
-	FILE *file;
-	char *content;
-	int lifi;
-}  bus_t;
-extern bus_t bus;
+	int opcode;
+	int queue_value;
+} validator_t;
 
-char *_realloc(char *ptr, unsigned int old_size, unsigned int new_size);
-ssize_t getstdin(char **lineptr, int file);
-char  *clean_line(char *content);
-void f_push(stack_t **head, unsigned int number);
-void f_pall(stack_t **head, unsigned int number);
-void f_pint(stack_t **head, unsigned int number);
-int execute(char *content, stack_t **head, unsigned int counter, FILE *file);
-void free_stack(stack_t *head);
-void f_pop(stack_t **head, unsigned int counter);
-void f_swap(stack_t **head, unsigned int counter);
-void f_add(stack_t **head, unsigned int counter);
-void f_nop(stack_t **head, unsigned int counter);
-void f_sub(stack_t **head, unsigned int counter);
-void f_div(stack_t **head, unsigned int counter);
-void f_mul(stack_t **head, unsigned int counter);
-void f_mod(stack_t **head, unsigned int counter);
-void f_pchar(stack_t **head, unsigned int counter);
-void f_pstr(stack_t **head, unsigned int counter);
-void f_rotl(stack_t **head, unsigned int counter);
-void f_rotr(stack_t **head, __attribute__((unused)) unsigned int counter);
-void addnode(stack_t **head, int n);
-void addqueue(stack_t **head, int n);
-void f_queue(stack_t **head, unsigned int counter);
-void f_stack(stack_t **head, unsigned int counter);
+extern validator_t rq;
+
+#endif /* VALIDATOR */
+
+#ifndef FUNCTIONS
+#define FUNCTIONS
+
+char *find_co(char *line, stack_t **stack, unsigned int n_line);
+int isnumber(char *str);
+void add_node(stack_t **stack, int value);
+void add_node_end(stack_t **stack, int value);
+int check_opcode(char *command, stack_t **stack, size_t n_line);
+void kill_free(char *line, FILE *file, stack_t *stack);
+void kill_stack(stack_t *stack);
+void pall(stack_t **stack, unsigned int n_line);
+void pint(stack_t **stack, unsigned int n_line);
+void pop(stack_t **stack, unsigned int n_line);
+void swap(stack_t **stack, unsigned int n_line);
+void _div(stack_t **stack, unsigned int n_line);
+void add(stack_t **stack, unsigned int n_line);
+void sub(stack_t **stack, unsigned int n_line);
+void mul(stack_t **stack, unsigned int n_line);
+void mod(stack_t **stack, unsigned int n_line);
+void pchar(stack_t **stack, unsigned int n_line);
+void rotl(stack_t **stack, unsigned int n_line);
+void pstr(stack_t **stack, unsigned int n_line);
+void rotr(stack_t **stack, unsigned int n_line);
 
 
-#endif
+#endif /* Functions */
