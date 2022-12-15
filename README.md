@@ -1,16 +1,6 @@
-Implement the push and pall opcodes.
-Implement the pint opcode.
-Implement the pop opcode.
-Implement the swap opcode.
-Implement the add opcode.
-Implement the nop opcode
-Implement the sub opcode.
-Implement the div opcode.
-Implement the mul opcode.
-Implement the mod opcode.
-Every good language comes with the capability of commenting. When the first non-space character of a line is #, treat this line as a comment (don’t do anything).
-Implement the pchar opcode.
-Implement the pstr opcode.
-Implement the rotl opcode.
-Implement the rotr opcode.
-Implement the stack and queue opcodes.
+0x18. C - Stacks, Queues - LIFO, FIFO
+
+Description
+This Holberton School project is a custom ByteCode interpreter, coded in C. Compilation: gcc -Wall -Werror -Wextra -pedantic *.c -o monty Usage: ./monty byte_file.m
+
+The program reads from the file "byte_file.m" that contains one instruction per line. It then calls the right function to modify a stack according to the instruction. It prints custom error messages if the instruction is wrong.
