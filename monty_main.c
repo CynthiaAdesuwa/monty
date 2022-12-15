@@ -1,9 +1,5 @@
 #include "monty.h"
-<<<<<<< HEAD
-
-=======
 #include <stdio.h>
->>>>>>> 450ffa23d434d5e28999d2aea9da46a274ab101d
 #define _GNU_SOURCE
 #include <stdlib.h>
 
